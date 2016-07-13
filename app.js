@@ -163,7 +163,7 @@ app.post('/webhook/', function (req, res) {
 			//console.log(t);
 			if(text.toLowerCase()=="inspire me"){
 				let q= quote.getQuote();
-            	sendTextMessage(sender, "Here is a quote for you by " + q.author +". It goes as "+q.quote);
+            	sendTextMessage(sender, "Here is a quote for you by " + q.author +". It goes as \""+q.quote+"\"");
         	}
 			else{
             	sendTextMessage(sender, "Please enter \"Inspire Me\" to receive a quote from the bot");
