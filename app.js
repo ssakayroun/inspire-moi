@@ -96,7 +96,7 @@ user.find(function(err, users){
 
 */
 
-var MongoSessionStore = require('session-mongoose')(require('connect'));
+//var MongoSessionStore = require('session-mongoose')(require('connect'));
 var ad_id="";
 
 /**************************** ADMIN PAGE HANDLINGS*********************************************/
@@ -142,17 +142,6 @@ app.post('/save_quote', function(req, res){
 	res.redirect('admin');
 	
 });
-//we handle not found urls
-app.use(function(req,res, next){
-	res.status('404');
-	res.render('404');
-});
-
-//we handle internal server errors
-app.use(function(req, res, next){
-	res.status('500');
-	res.render('500');
-});
 
 /*******************************for Facebook Authentification and verification****************************/
 app.get('/webhook/', function (req, res) {
@@ -179,7 +168,17 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 
+//we handle not found urls
+app.use(function(req,res, next){
+	res.status('404');
+	res.render('404');
+});
 
+//we handle internal server errors
+app.use(function(req, res, next){
+	res.status('500');
+	res.render('500');
+});
 
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
