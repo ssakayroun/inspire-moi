@@ -161,9 +161,14 @@ app.post('/webhook/', function (req, res) {
 			//var t= translator("Somethin","en","es");
 			//alert(t);
 			//console.log(t);
-			let q= quote.getQuote();
-            sendTextMessage(sender, "Here is a quote for you by " + q.author +". It goes as "+q.quote);
-        }
+			if(text.toLowerCase=="inspire me"){
+				let q= quote.getQuote();
+            	sendTextMessage(sender, "Here is a quote for you by " + q.author +". It goes as "+q.quote);
+        	}
+			else{
+            	sendTextMessage(sender, "Please enter \"Inspire Me\" to receive a quote from the bot");
+			}
+		}
     }
     res.sendStatus(200)
 })
